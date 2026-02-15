@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cocina: oklch(55% 0.2 260);
+  --color-office: oklch(65% 0.18 55);
+  --color-sala: oklch(60% 0.2 145);
+  --color-abaceria: oklch(75% 0.15 90);
+
+  --color-background: oklch(98% 0.005 264);
+  --color-foreground: oklch(20% 0.02 264);
+  --color-surface: oklch(100% 0 0);
+  --color-border: oklch(90% 0.01 264);
+  --color-muted: oklch(95% 0.005 264);
+  --color-muted-foreground: oklch(45% 0.02 264);
+  --color-danger: oklch(55% 0.22 27);
+  --color-danger-foreground: oklch(97% 0.01 27);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-up: slide-up 0.25s ease-out;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(1rem); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sin conexion - Vacaciones Taperia</title>
+    <style>
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background: #f9fafb;
+        color: #333;
+      }
+      .content {
+        text-align: center;
+        padding: 2rem;
+      }
+      .icon { font-size: 3rem; margin-bottom: 1rem; }
+      h1 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+      p { color: #666; font-size: 0.875rem; margin-bottom: 1.5rem; }
+      button {
+        background: #1e3a5f;
+        color: white;
+        border: none;
+        padding: 0.625rem 1.25rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="icon">&#128225;</div>
+      <h1>Sin conexion</h1>
+      <p>Los datos guardados siguen disponibles cuando recuperes la conexion.</p>
+      <button onclick="location.reload()">Reintentar</button>
+    </div>
+  </body>
+</html>

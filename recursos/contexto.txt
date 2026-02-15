@@ -1,0 +1,170 @@
+Hola Claude! Vamos a hacer una nueva aplicación, te cuento cuál es el caso de uso que queremos resolver. Un amigo tiene un negocio de hosteleria y quiere tener una aplicación en el iphone que le permita visualizar de manera rápida qué roles      
+  están de vacaciones en un día en concreto. Esto es porque necesita gestionar que no haya mas de X personas de un mismo rol un mismo día de vacaciones. Por ejemplo, si existen 6 personas con el rol de "cocina", es decir, 6 personas que trabajan   
+  en la cocina, no puede haber de vacaciones en un mismo día 3 o más personas con el rol cocina.                                                                                                                                                        
+                                                                                                                                                                                                                                                        
+  Las restricciones son las siguientes:                                                                                                                                                                                                                 
+  En cocina puede haber como máximo 2 personas de vacaciones un mismo día                                                                                                                                                                               
+  Para el resto de roles (abaceria, sala y office) podrá haber como máximo 1 persona de vacaicones un mismo día.                                                                                                                                        
+                                                                                                                                                                                                                                                        
+  Actualmente, el dueño del negocio recoge los días que tiene de vacaciones las personas tal y como ves en el .pdf que está en la carpeta recursos. Ese archivo pdf tiene algunas erratas pero es simplemente un ejemplo para que entiendas cómo se     
+  recoge esta información.                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                        
+  Creo que el flujo ideal sería que la aplicación tuviese acceso al excel de las vacaciones del personal, obtuviera los datos y los importase dentro de la aplicación. Esos datos se importarían cuando el usuario presionase un botón de importar      
+  información. Al importarse la información se tendría que importar únicamente los cambios que haya respecto a una importación anterior.                                                                                                                
+                                                                                                                                                                                                                                                        
+  A mi lo que se me ocurre es que vea una vista mensual que ocupe la mitad de la pantalla del teléfono y abajo de esta vista mensual una leyenda de colores. Por ejemplo, cocina en azul, office en naranja, sala en verde y abacería en amarillo. De   
+  esta forma el usuario vería en los días del mes puntos de colores que le permitiría obtener información de cuántas personas están de vacaciones ese día. Por ejemplo, si para el 14 de febrero están de vacaciones 2 personas de cocina, 1 de office, 
+   1 de sala y 1 de abacería el usuario vería 2 puntos azules, 1 naranja, 1 verde y 1 amarillo. Además, al presionar en el día aparecería una ventana que le diría qué personas están de vacaciones ese día.                                            
+                                                                                                                                                                                                                                                        
+  Plantea cómo vamos a generar la app, qué stack tecnológico, busca hacerlo de manera gratuita. Una vez que tengamos el plan importaremos las skills o agentes necesarios para que se haga correctamente manejando buenas praxis del stack tecnológico. 
+
+● Let me explore what we have in the project directory and understand the PDF resource.
+
+● Explore(Explore project structure)
+  ⎿  Done (12 tool uses · 14.5k tokens · 35s)
+  (ctrl+o to expand)
+
+● Read 1 file (ctrl+o to expand)
+
+● Ya tengo una visión completa del proyecto. He analizado el PDF con los datos de vacaciones del personal. Veo 4 roles con sus empleados:
+
+  - Cocina (6 personas): Adrián, Inma, Alberto, Olga, Fátima, Manoli
+  - Office (3 personas): Rosi, Carmen, Pepi
+  - Sala (7 personas): Jesi, Chari, Anna, Sandra, Maribel, Patri, Willy
+  - Abacería (5 personas): Simón, Mercedes, Cristina, José, Paula
+
+  Antes de diseñar el plan, necesito aclarar un par de puntos:
+
+● User answered Claude's questions:
+  ⎿  · ¿Tu amigo necesita publicar la app en la App Store o le vale con poder usarla directamente en su iPhone sin pasar por la tienda (como una web app que se añade a la pantalla de inicio)? → Web App (PWA)
+     · ¿De dónde obtendrá el Excel de vacaciones? ¿Será un archivo .xlsx que tenga en el propio iPhone, en Google Drive, o en otro sitio? → Google Sheets
+
+
+
+● Perfecto. PWA + Google Sheets. Ahora voy a diseñar el plan técnico.
+
+● Plan(Design implementation plan)
+  ⎿  Done (3 tool uses · 22.5k tokens · 2m 10s)
+  (ctrl+o to expand)
+
+● Tengo un plan muy completo. Antes de finalizarlo, necesito aclarar un par de cosas más:
+
+● User answered Claude's questions:
+  ⎿  · ¿Podemos pedirle al dueño que reestructure su Google Sheet a un formato sencillo (una fila por periodo de vacaciones con columnas: Empleado, Puesto, Fecha Inicio DD/MM/AAAA, Fecha Fin DD/MM/AAAA)? Esto simplifica mucho el desarrollo y
+     reduce errores. → Sí, lo reestructura
+     · ¿Las vacaciones del PDF son de 2025? ¿Y la app debería funcionar año tras año o solo para un año concreto? → Multi-año
+
+
+
+● Perfecto: formato reestructurado y soporte multi-año. Ahora escribo el plan final.
+
+● Updated plan
+  ⎿  /plan to preview
+
+● El plan esta listo. Resumen rapido:
+
+  Stack: Vite + React + TypeScript + Tailwind CSS, desplegado como PWA en GitHub Pages. Todo gratis.
+
+  Flujo: El dueno publica su Google Sheet como CSV. La app lo importa con un boton, detecta cambios via hash SHA-256, y muestra un calendario mensual con puntos de colores por rol. Al tocar un dia, un modal muestra quien esta de vacaciones. Los dias
+  que exceden el limite se marcan en rojo.
+
+  4 fases: Scaffold -> Importacion Google Sheets -> Visualizacion datos -> Pulido y deploy.
+  ⎿  Tool use rejected with user message: Ahra me gustaría crear los agentes necesarios para poder realizar la aplicación y dotar a esos agentes de skills. Me ayudas a crearlos? Entiendo que necesitaríamos los siguientes agentes de:
+     - Vite
+     - React
+     - Typescript
+     - PWA
+     - Github
+
+     Crees que haría falta alguno más?
+
+
+● Buena idea crear agentes especializados. Sobre tu lista y si hace falta alguno mas:
+
+  Tu lista es solida, pero anadiria:
+
+  - Tailwind CSS - Esta en el stack y tiene sus propias convenciones (clases utilitarias, config, responsive design mobile-first)
+  - Google Sheets / CSV - Para la logica de integracion con la API publica de Sheets
+
+  Antes de crearlos, necesito entender que quieres decir exactamente por "agentes con skills":
+
+● User answered Claude's questions:
+  ⎿  · ¿Qué tipo de agentes quieres crear? Esto determina cómo los configuramos. → Sub-agentes con prompts
+
+● Perfecto. Vamos a crear sub-agentes con prompts especializados. La idea es tener archivos de prompt en el proyecto que se usen al delegar tareas con el Task tool durante el desarrollo.
+
+  Propongo esta estructura:
+
+  .claude/
+    agents/
+      vite-agent.md        # Scaffolding, config, build, plugins
+      react-agent.md       # Componentes, hooks, patrones
+      typescript-agent.md  # Tipos, interfaces, type safety
+      tailwind-agent.md    # Estilos, responsive, mobile-first
+      pwa-agent.md         # Service worker, manifest, iOS
+      github-agent.md      # Deploy GitHub Pages, CI/CD
+      sheets-agent.md      # Integracion Google Sheets CSV
+
+  Cada agente tendra:
+  - Rol y responsabilidad claros
+  - Best practices de su tecnologia
+  - Restricciones del proyecto (versiones, patrones a seguir)
+  - Contexto del proyecto calendario-vacaciones
+
+● User answered Claude's questions:
+  ⎿  · ¿Te parece bien esta estructura de 7 agentes? ¿Quieres añadir o quitar alguno? → Existe una web creada por vercel que se llama skills.sh. Tiene esta descripción "Skills are reusable capabilities for AI agents. Install them with a single
+     command to enhance your agents with access to procedural knowledge.". Lo utilizamos para lo que queremos? Yo entiendo que son skills (conocimiento) para los agentes del proyecto pero corrígeme si me equivoco
+
+
+
+● Interesante, no conocia skills.sh. Dejame investigarlo.
+
+● Fetch(https://skills.sh)
+  ⎿  Received 263.1KB (200 OK)
+
+● Web Search("skills.sh vercel skilladd claude code react vite typescript tailwind pwa install command")
+  ⎿  Did 1 search in 9s
+
+● Fetch(https://skills.sh)
+  ⎿  Received 263.1KB (200 OK)
+
+● Fetch(https://github.com/vercel-labs/skills)
+  ⎿  Received 391KB (200 OK)
+
+● Excelente hallazgo. skills.sh es exactamente lo que necesitamos. Son archivos SKILL.md que se instalan en .claude/skills/ y Claude Code los lee automaticamente para tener conocimiento especializado.
+
+  He investigado el directorio y esto es lo que hay disponible para nuestro stack:
+
+  Skills existentes que podemos instalar:
+
+  ┌───────────────────────────┬────────────────────────────────┬──────────┐
+  │           Skill           │              Repo              │ Installs │
+  ├───────────────────────────┼────────────────────────────────┼──────────┤
+  │ vite                      │ antfu/skills                   │ 5.2K     │
+  ├───────────────────────────┼────────────────────────────────┼──────────┤
+  │ typescript-advanced-types │ wshobson/agents                │ 5.5K     │
+  ├───────────────────────────┼────────────────────────────────┼──────────┤
+  │ tailwind-design-system    │ wshobson/agents                │ 6.2K     │
+  ├───────────────────────────┼────────────────────────────────┼──────────┤
+  │ react:components          │ google-labs-code/stitch-skills │ 5.0K     │
+  └───────────────────────────┴────────────────────────────────┴──────────┘
+
+  Skills que NO existen y habria que crear manualmente:
+  - PWA (especifico para iOS Safari)
+  - GitHub Pages (deploy)
+  - Google Sheets CSV (integracion)
+
+  El comando de instalacion seria:
+  npx skills add antfu/skills --skill vite -a claude-code
+  npx skills add wshobson/agents --skill typescript-advanced-types --skill tailwind-design-system -a claude-code
+  npx skills add google-labs-code/stitch-skills --skill react:components -a claude-code
+
+  Y para los que no existen, los creariamos como archivos SKILL.md propios en .claude/skills/.
+
+● User answered Claude's questions:
+  ⎿  · ¿Te parece bien este enfoque? Instalar las 4 skills existentes de skills.sh + crear 3 skills propias (PWA, GitHub Pages, Google Sheets CSV). → Y porque en vez de crear las skills propias no utilizamos estas?
+     https://skills.sh/alinaqi/claude-bootstrap/pwa-development
+     https://skills.sh/wshobson/agents/github-actions-templates
+     https://skills.sh/github/awesome-copilot/git-commit
+     https://skills.sh/composiohq/awesome-claude-skills/googlesheets-automation
+     https://skills.sh/andrejones92/canifi-life-os/google-sheets
