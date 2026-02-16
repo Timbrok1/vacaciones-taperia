@@ -17,7 +17,7 @@ export function App() {
   const selectedVacations = selectedDate ? getVacationsForDay(selectedDate) : null
 
   return (
-    <div className="flex min-h-svh flex-col">
+    <div className="mx-auto flex min-h-svh max-w-lg flex-col">
       <Header
         year={year}
         month={month}
@@ -26,7 +26,7 @@ export function App() {
         onToday={goToToday}
       />
 
-      <main className="flex flex-1 flex-col px-2 pb-4">
+      <main className="flex flex-1 flex-col gap-1 px-3 pb-6 pt-3">
         <Calendar
           year={year}
           month={month}
@@ -36,7 +36,7 @@ export function App() {
 
         <Legend />
 
-        <div className="mt-auto pt-4">
+        <div className="mt-auto pt-6">
           <ImportButton
             importState={importState}
             onImport={doImport}
