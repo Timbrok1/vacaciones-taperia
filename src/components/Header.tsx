@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export function Header({ year, month, onPrev, onNext, onToday }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-10 bg-surface/80 backdrop-blur-lg">
+    <header className="sticky top-0 z-10 bg-surface/80 backdrop-blur-lg" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       <div className="flex items-center justify-between px-4 py-3">
         <button
           onClick={onPrev}
