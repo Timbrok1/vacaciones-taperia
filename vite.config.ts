@@ -42,19 +42,6 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/docs\.google\.com\/spreadsheets\/.*/i,
-            handler: 'NetworkFirst',
-            options: {
-              cacheName: 'csv-cache',
-              expiration: {
-                maxEntries: 5,
-                maxAgeSeconds: 60 * 60 * 24,
-              },
-            },
-          },
-        ],
       },
     }),
   ],

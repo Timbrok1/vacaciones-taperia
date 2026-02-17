@@ -24,7 +24,7 @@ export function useImport({ currentHash, updateData }: Readonly<UseImportParams>
     setImportState({ status: 'loading' })
 
     try {
-      const response = await fetch(GOOGLE_SHEET_CSV_URL)
+      const response = await fetch(GOOGLE_SHEET_CSV_URL, { cache: 'no-store' })
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
       }
