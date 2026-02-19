@@ -1,6 +1,6 @@
 import type { Role, RoleConfig } from '@/types'
 
-export const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTDXW8Sppk0XF53LcSKHkPa4YMgKf5QT5bHXkpwaBHPs9YKggHOlWUFy2R5KtpUChXM9hwGYswBqKXB/pub?gid=191852075&single=true&output=csv'
+export const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQCNTZx2prh5lni3WiprAx5yiKLdSXF31SfmcTEAcfw4h-AP4sFQlxoeF9yPUiLA/pub?gid=2033922926&single=true&output=csv'
 
 export const ROLES: ReadonlyArray<RoleConfig> = [
   {
