@@ -7,6 +7,7 @@ const ROLE_NORMALIZE: Readonly<Record<string, Role>> = {
   sala: 'sala',
   'abacería': 'abaceria',
   abaceria: 'abaceria',
+  baja: 'baja',
 }
 
 export function parseCSV(csvText: string): VacationPeriod[] {

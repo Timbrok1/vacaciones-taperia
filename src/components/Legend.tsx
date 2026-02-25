@@ -13,9 +13,11 @@ export function Legend() {
           <span className="text-[11px] font-medium text-foreground">
             {role.label}
           </span>
-          <span className="text-[10px] text-muted-foreground">
-            max {role.maxVacaciones}
-          </span>
+          {role.maxVacaciones !== undefined && (
+            <span className="text-[10px] text-muted-foreground">
+              max {role.maxVacaciones}
+            </span>
+          )}
         </div>
       ))}
     </div>

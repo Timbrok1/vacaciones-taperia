@@ -12,7 +12,7 @@ interface DayCellProps {
 
 export function DayCell({ day, dateKey, isToday, vacationInfo, onSelect }: DayCellProps) {
   const hasExceeded = vacationInfo
-    ? ROLES.some((role) => vacationInfo.byRole[role.key].length > role.maxVacaciones)
+    ? ROLES.some((role) => role.maxVacaciones !== undefined && vacationInfo.byRole[role.key].length > role.maxVacaciones)
     : false
 
   const totalVacations = vacationInfo
@@ -46,7 +46,7 @@ export function DayCell({ day, dateKey, isToday, vacationInfo, onSelect }: DayCe
           {ROLES.map((role) => {
             const count = vacationInfo!.byRole[role.key].length
             if (count === 0) return null
-            const exceeded = count > role.maxVacaciones
+            const exceeded = role.maxVacaciones !== undefined && count > role.maxVacaciones
             return (
               <span
                 key={role.key}

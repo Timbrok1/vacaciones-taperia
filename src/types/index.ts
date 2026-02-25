@@ -1,4 +1,4 @@
-export type Role = 'cocina' | 'office' | 'sala' | 'abaceria'
+export type Role = 'cocina' | 'office' | 'sala' | 'abaceria' | 'baja'
 
 export interface VacationPeriod {
   readonly empleado: string
@@ -22,7 +22,7 @@ export interface RoleConfig {
   readonly key: Role
   readonly label: string
   readonly colorClass: string
-  readonly maxVacaciones: number
+  readonly maxVacaciones?: number
 }
 
 export type ImportState =

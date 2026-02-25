@@ -27,6 +27,11 @@ export const ROLES: ReadonlyArray<RoleConfig> = [
     colorClass: 'bg-abaceria',
     maxVacaciones: 1,
   },
+  {
+    key: 'baja',
+    label: 'Baja',
+    colorClass: 'bg-baja',
+  },
 ]
 
 export const ROLE_MAP: Readonly<Record<Role, RoleConfig>> = Object.fromEntries(

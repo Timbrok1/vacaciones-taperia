@@ -5,11 +5,13 @@
   --color-office: oklch(65% 0.18 55);
   --color-sala: oklch(60% 0.2 145);
   --color-abaceria: oklch(75% 0.15 90);
+  --color-baja: oklch(55% 0.01 264);
 
   --color-cocina-light: oklch(90% 0.08 260);
   --color-office-light: oklch(90% 0.06 55);
   --color-sala-light: oklch(90% 0.08 145);
   --color-abaceria-light: oklch(92% 0.06 90);
+  --color-baja-light: oklch(88% 0.005 264);
 
   --color-background: oklch(96.5% 0.005 264);
   --color-foreground: oklch(20% 0.02 264);

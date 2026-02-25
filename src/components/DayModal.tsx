@@ -64,7 +64,7 @@ export function DayModal({ dateKey, vacationInfo, onClose }: DayModalProps) {
             {ROLES.map((role) => {
               const employees = vacationInfo!.byRole[role.key]
               if (employees.length === 0) return null
-              const exceeded = employees.length > role.maxVacaciones
+              const exceeded = role.maxVacaciones !== undefined && employees.length > role.maxVacaciones
 
               return (
                 <div
@@ -78,7 +78,7 @@ export function DayModal({ dateKey, vacationInfo, onClose }: DayModalProps) {
                     <span className={cn('size-3 rounded-full', role.colorClass)} />
                     <span className="text-sm font-semibold">{role.label}</span>
                     <span className="ml-auto text-xs font-medium text-muted-foreground">
-                      {employees.length}/{role.maxVacaciones}
+                      {employees.length}{role.maxVacaciones !== undefined ? `/${role.maxVacaciones}` : ''}
                     </span>
                     {exceeded && (
                       <span className="rounded-full bg-danger px-2 py-0.5 text-[10px] font-bold text-white">
